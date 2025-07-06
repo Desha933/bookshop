@@ -17,7 +17,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidinganimation;
-  late Animation<Offset> photoanimation;
+
   @override
   void initState() {
     initialSlidingAnimation();
@@ -37,19 +37,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        AnimatedBuilder(
-          animation: photoanimation,
-          builder: (context, _) {
-            return SlideTransition(
-              position: photoanimation,
-              child: SvgPicture.asset(
-                Assetsimages.logo,
-                width: 200,
-                color: kLogoColor,
-              ),
-            );
-          },
-        ),
+        SvgPicture.asset(Assetsimages.logo, width: 200, color: kLogoColor),
         SlidingText(slidinganimation: slidinganimation),
       ],
     );
@@ -65,10 +53,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       begin: Offset(0, 10),
       end: Offset.zero,
     ).animate(animationController);
-    photoanimation = Tween<Offset>(
-      begin: Offset(0, -10),
-      end: Offset.zero,
-    ).animate(animationController);
+
     animationController.forward();
   }
 

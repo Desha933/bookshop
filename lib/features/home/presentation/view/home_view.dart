@@ -1,3 +1,4 @@
+import 'package:bookapp/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -5,6 +6,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(leading: Icon(Icons.ac_unit_outlined)));
+    return Scaffold(body: SafeArea(child: const HomeViewBody()));
   }
 }
