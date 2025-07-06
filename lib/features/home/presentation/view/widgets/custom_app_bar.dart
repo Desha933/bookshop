@@ -1,5 +1,5 @@
 import 'package:bookapp/contant.dart';
-import 'package:bookapp/core/assetsimages.dart';
+import 'package:bookapp/core/utils/assetsimages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

@@ -1,5 +1,5 @@
 import 'package:bookapp/contant.dart';
-import 'package:bookapp/core/assetsimages.dart';
+import 'package:bookapp/core/utils/assetsimages.dart';
 import 'package:bookapp/features/home/presentation/view/home_view.dart';
 import 'package:bookapp/features/splashview/presentation/view/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
