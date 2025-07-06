@@ -1,8 +1,10 @@
 import 'package:bookapp/contant.dart';
 import 'package:bookapp/core/assetsimages.dart';
+import 'package:bookapp/features/home/presentation/view/home_view.dart';
 import 'package:bookapp/features/splashview/presentation/view/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -18,20 +20,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late Animation<Offset> photoanimation;
   @override
   void initState() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
-
-    slidinganimation = Tween<Offset>(
-      begin: Offset(0, 10),
-      end: Offset.zero,
-    ).animate(animationController);
-    photoanimation = Tween<Offset>(
-      begin: Offset(0, -10),
-      end: Offset.zero,
-    ).animate(animationController);
-    animationController.forward();
+    initialSlidingAnimation();
+    navigationToHomeView();
     super.initState();
   }
 
@@ -63,5 +53,32 @@ class _SplashViewBodyState extends State<SplashViewBody>
         SlidingText(slidinganimation: slidinganimation),
       ],
     );
+  }
+
+  void initialSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+
+    slidinganimation = Tween<Offset>(
+      begin: Offset(0, 10),
+      end: Offset.zero,
+    ).animate(animationController);
+    photoanimation = Tween<Offset>(
+      begin: Offset(0, -10),
+      end: Offset.zero,
+    ).animate(animationController);
+    animationController.forward();
+  }
+
+  void navigationToHomeView() {
+    Future.delayed(Duration(seconds: 2), () {
+      Get.to(
+        () => HomeView(),
+        transition: Transition.fade,
+        duration: kTabScrollDuration,
+      );
+    });
   }
 }
