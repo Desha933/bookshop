@@ -1,4 +1,4 @@
-import 'package:bookapp/features/home/presentation/view/widgets/categry_item.dart';
+import 'package:bookapp/features/home/presentation/view/widgets/categry_list_view.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +7,6 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [const CustomAppBar(), const CategryItem()]);
+    return Column(children: [const CustomAppBar(), const CategryListView()]);
   }
 }
