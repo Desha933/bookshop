@@ -1,10 +1,10 @@
 import 'package:bookapp/contant.dart';
+import 'package:bookapp/core/utils/app_router.dart';
 import 'package:bookapp/core/utils/assetsimages.dart';
-import 'package:bookapp/features/home/presentation/view/home_view.dart';
 import 'package:bookapp/features/splashview/presentation/view/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -59,11 +59,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigationToHomeView() {
     Future.delayed(Duration(seconds: 2), () {
-      Get.to(
-        () => HomeView(),
-        transition: Transition.fade,
-        duration: kTabScrollDuration,
-      );
+      // Get.to(
+      //   () => HomeView(),
+      //   transition: Transition.fade,
+      //   duration: kTabScrollDuration,
+      // );
+
+      GoRouter.of(context).push(AppRouter.kHomeViewPath);
     });
   }
 }
