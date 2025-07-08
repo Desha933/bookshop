@@ -1,3 +1,4 @@
+import 'package:bookapp/contant.dart';
 import 'package:bookapp/core/utils/styles.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,6 @@ class BestSellerItem extends StatelessWidget {
       height: 125,
       child: Row(
         children: [
-          const SizedBox(width: 20),
           AspectRatio(
             aspectRatio: 2.2 / 3.5,
             child: Container(
@@ -27,7 +27,7 @@ class BestSellerItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 30),
+          const SizedBox(width: kPadding),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
