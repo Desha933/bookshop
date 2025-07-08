@@ -1,4 +1,5 @@
 import 'package:bookapp/core/utils/styles.dart';
+import 'package:bookapp/features/home/presentation/view/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerItem extends StatelessWidget {
@@ -27,30 +28,36 @@ class BestSellerItem extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 30),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width * .5,
-                child: const Text(
-                  'Harry Potter and the Goblet Of Fire ',
-                  style: Styles.textstyle20,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              Text('G.T.Rowling', style: Styles.textstyle14),
-              Row(
-                children: [
-                  Text(
-                    r'99.99 $',
-                    style: Styles.textstyle20.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width * .5,
+                  child: const Text(
+                    'Harry Potter and the Goblet Of Fire ',
+                    style: Styles.textstyle20,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ],
-              ),
-            ],
+                ),
+                const SizedBox(height: 3),
+                Text('G.T.Rowling', style: Styles.textstyle14),
+                const SizedBox(height: 3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      r'99.99 $',
+                      style: Styles.textstyle20.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const BookRating(),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
