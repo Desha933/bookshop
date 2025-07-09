@@ -1,4 +1,5 @@
 import 'package:bookapp/contant.dart';
+import 'package:bookapp/core/shared_widgets/book_action.dart';
 import 'package:bookapp/core/utils/styles.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/book_rating.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/categry_item.dart';
@@ -29,6 +30,8 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 18),
           const BookRating(mainAxisAlignment: MainAxisAlignment.center),
+          const SizedBox(height: 18),
+          const BookActions(),
         ],
       ),
     );
