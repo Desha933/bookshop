@@ -1,7 +1,7 @@
 import 'package:bookapp/contant.dart';
 import 'package:bookapp/core/utils/styles.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/best_seller_list_view.dart';
-import 'package:bookapp/features/home/presentation/view/widgets/categry_list_view.dart';
+import 'package:bookapp/features/home/presentation/view/widgets/featured_books_list_view.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class HomeViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         const SliverToBoxAdapter(child: CustomAppBar()),
-        const SliverToBoxAdapter(child: CategryListView()),
+        const SliverToBoxAdapter(child: FeaturedBooksListView()),
         const SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.only(

@@ -1,11 +1,9 @@
 import 'package:bookapp/contant.dart';
-import 'package:bookapp/core/utils/api_service.dart';
 import 'package:bookapp/core/utils/app_router.dart';
 import 'package:bookapp/core/utils/service_locator.dart';
 import 'package:bookapp/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookapp/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookapp/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,11 +24,12 @@ class BookShop extends StatelessWidget {
       providers: [
         BlocProvider(
           create:
-              (context) => FeaturedBooksCubit(HomeRepoImpl(ApiService(Dio()))),
+              (context) =>
+                  FeaturedBooksCubit(getIt.get<HomeRepoImpl>())
+                    ..fetchFeaturedBooks(),
         ),
         BlocProvider(
-          create:
-              (context) => NewestBooksCubit(HomeRepoImpl(ApiService(Dio()))),
+          create: (context) => NewestBooksCubit(getIt.get<HomeRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(

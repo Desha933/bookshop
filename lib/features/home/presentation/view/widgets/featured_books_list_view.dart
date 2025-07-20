@@ -5,8 +5,8 @@ import 'package:bookapp/features/home/presentation/view/widgets/categry_item.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SimilarBooksListView extends StatelessWidget {
-  const SimilarBooksListView({super.key});
+class FeaturedBooksListView extends StatelessWidget {
+  const FeaturedBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,20 @@ class SimilarBooksListView extends StatelessWidget {
       builder: (context, state) {
         if (state is FeaturedBooksSuccess) {
           return SizedBox(
-            height: MediaQuery.sizeOf(context).height * .15,
+            height: MediaQuery.sizeOf(context).height * .25,
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
-
+              physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: const CategryItem(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: CategryItem(
                     imagelink:
-                        'https://cdn.pixabay.com/photo/2017/05/31/16/39/windows-2360920_1280.png',
+                        state.books[index].volumeInfo!.imageLinks!.thumbnail
+                            as String,
+                    // ??
+                    // 'https://cdn.pixabay.com/photo/2017/05/31/16/39/windows-2360920_1280.png',
                   ),
                 );
               },
