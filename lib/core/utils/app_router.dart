@@ -2,6 +2,7 @@ import 'package:bookapp/core/utils/service_locator.dart';
 import 'package:bookapp/features/home/data/models/book_model/book_model.dart';
 import 'package:bookapp/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookapp/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
+import 'package:bookapp/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookapp/features/home/presentation/view/book_details_view.dart';
 import 'package:bookapp/features/home/presentation/view/home_view.dart';
 import 'package:bookapp/features/search/presentation/view/search_view.dart';
@@ -28,7 +29,10 @@ abstract class AppRouter {
         path: kBookDetailsViewPath,
         builder: (context, state) {
           final BookModel bookmodel = state.extra as BookModel;
-          return BookDetailsView(bookModel: bookmodel);
+          return BlocProvider(
+            create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
+            child: BookDetailsView(bookModel: bookmodel),
+          );
         },
       ),
       GoRoute(
