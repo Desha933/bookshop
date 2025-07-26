@@ -1,18 +1,22 @@
 import 'package:bookapp/contant.dart';
 import 'package:bookapp/core/utils/app_router.dart';
 import 'package:bookapp/core/utils/styles.dart';
+import 'package:bookapp/features/home/data/models/book_model/book_model.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/book_rating.dart';
+import 'package:bookapp/features/home/presentation/view/widgets/categry_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
-
+  const BookListViewItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsViewPath);
+        GoRouter.of(
+          context,
+        ).push(AppRouter.kBookDetailsViewPath, extra: bookModel);
       },
       child: SizedBox(
         height: 125,
@@ -20,17 +24,8 @@ class BookListViewItem extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 2.2 / 3.5,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.red,
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(
-                      'https://cdn.pixabay.com/photo/2017/05/31/16/39/windows-2360920_1280.png',
-                    ),
-                  ),
-                ),
+              child: CategryItem(
+                imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',
               ),
             ),
             const SizedBox(width: kPadding),
@@ -40,26 +35,29 @@ class BookListViewItem extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width * .5,
-                    child: const Text(
-                      'Harry Potter and the Goblet Of Fire ',
+                    child: Text(
+                      ' ${bookModel.volumeInfo!.title}',
                       style: Styles.textstyle20,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const SizedBox(height: 3),
-                  Text('G.T.Rowling', style: Styles.textstyle14),
+                  Text(
+                    '${bookModel.volumeInfo?.authors?[0]}' ?? 'G.T.Rowling',
+                    style: Styles.textstyle14,
+                  ),
                   const SizedBox(height: 3),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        r'99.99 $',
+                        r'Free',
                         style: Styles.textstyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const BookRating(),
+                      BookRating(bookModel: bookModel),
                     ],
                   ),
                 ],

@@ -1,23 +1,21 @@
+import 'package:bookapp/core/shared_widgets/custom_loading_indicator.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CategryItem extends StatelessWidget {
-  const CategryItem({super.key, required this.imagelink});
-  final String imagelink;
+  const CategryItem({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 2.2 / 3.5,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.red,
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: NetworkImage(
-              imagelink,
-              //  ?? 'https://cdn.pixabay.com/photo/2017/05/31/16/39/windows-2360920_1280.png'
-            ),
-          ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: CachedNetworkImage(
+          fit: BoxFit.fill,
+          imageUrl: imageUrl,
+          errorWidget: (context, url, error) => const Icon(Icons.error),
+          placeholder: (context, url) => const CustomLoadingIndicator(),
         ),
       ),
     );
