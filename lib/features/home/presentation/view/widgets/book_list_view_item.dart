@@ -24,9 +24,7 @@ class BookListViewItem extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 2.2 / 3.5,
-              child: CategryItem(
-                imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',
-              ),
+              child: CategryItem(bookModel: bookModel),
             ),
             const SizedBox(width: kPadding),
             Expanded(

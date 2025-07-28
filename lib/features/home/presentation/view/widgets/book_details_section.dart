@@ -15,28 +15,26 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: CategryItem(
-            imageUrl:
-                bookmodel.volumeInfo?.imageLinks?.thumbnail ??
-                'https://cdn.pixabay.com/photo/2017/05/31/16/39/windows-2360920_1280.png',
-          ),
+          child: CategryItem(bookModel: bookmodel),
         ),
         const SizedBox(height: 30),
         Text(
           '${bookmodel.volumeInfo?.title}',
           style: Styles.textstyle30,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 6),
         Text(
-          '${bookmodel.volumeInfo?.authors?[0]}' ?? 'G.T.Rowling',
+          '${bookmodel.volumeInfo?.authors?[0]}' ?? '',
           style: Styles.textstyle16.copyWith(fontStyle: FontStyle.italic),
         ),
         const SizedBox(height: 18),
-        // const BookRating(mainAxisAlignment: MainAxisAlignment.center),
+        BookRating(
+          mainAxisAlignment: MainAxisAlignment.center,
+          bookModel: bookmodel,
+        ),
         const SizedBox(height: 18),
-        const BookActions(),
+        BookActions(bookModel: bookmodel),
       ],
     );
   }

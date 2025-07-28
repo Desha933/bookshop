@@ -19,7 +19,7 @@ class BookRating extends StatelessWidget {
         const Icon(FontAwesomeIcons.solidStar, color: Color(0xffffdd4f)),
         const SizedBox(width: 6.3),
         Text(
-          '${bookModel.volumeInfo?.maturityRating}' ?? '4.8',
+          '${bookModel.volumeInfo?.maturityRating}' ?? '0',
           style: Styles.textstyle16,
         ),
         const SizedBox(width: 5),

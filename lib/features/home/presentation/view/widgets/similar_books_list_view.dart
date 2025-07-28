@@ -1,7 +1,6 @@
 import 'package:bookapp/core/shared_widgets/custom_error_widget.dart';
 import 'package:bookapp/core/shared_widgets/custom_loading_indicator.dart';
 import 'package:bookapp/features/home/data/models/book_model/book_model.dart';
-import 'package:bookapp/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookapp/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookapp/features/home/presentation/view/widgets/categry_item.dart';
 import 'package:flutter/material.dart';
@@ -32,16 +31,13 @@ class _SimilarBooksListViewState extends State<SimilarBooksListView> {
           return SizedBox(
             height: MediaQuery.sizeOf(context).height * .15,
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
 
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: const CategryItem(
-                    imageUrl:
-                        'https://cdn.pixabay.com/photo/2017/05/31/16/39/windows-2360920_1280.png',
-                  ),
+                  child: CategryItem(bookModel: state.books[index]),
                 );
               },
             ),
